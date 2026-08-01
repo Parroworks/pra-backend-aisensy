@@ -8,7 +8,8 @@ from routers.schedule import router as schedule_router
 from routers.clinic_schedule import router as clinic_schedule_router
 from routers.prescription_ai_router import router as prescription_ai_router
 from routers.lab_reports_router import router as lab_reports_router
-from twilio.twiml.messaging_response import MessagingResponse
+from embedded_signup import router as embedded_signup_router
+#from twilio.twiml.messaging_response import MessagingResponse
 from dotenv import load_dotenv
 import os
 import httpx
@@ -143,6 +144,7 @@ app.include_router(schedule_router)
 app.include_router(clinic_schedule_router)
 app.include_router(prescription_ai_router)
 app.include_router(lab_reports_router, prefix="/api/lab", tags=["lab"])
+app.include_router(embedded_signup_router)
 
 # ── MCP HTTP Transport ────────────────────────────────────────────────────────
 _mcp_server = create_parro_mcp_server(supabase)
